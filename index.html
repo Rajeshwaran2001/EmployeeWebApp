@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="./wwwroot/jquery-2.2.3.min.js" type="text/javascript"></script>
+</head>
+<body>
+    <button id="btnGetAll">Get All Eployee</button><br /><br />
+    <input type="text" id="txtEmployeeId" placeholder="Employee Id For Get" />
+    <button id="btnGet">Get a Employee</button><br /><br />
+
+    <input type="text" id="txtEmployeeId2" placeholder="Employee Id For Delete" />
+    <button id="btnDelete">Delete a Employee</button><br />
+    <br />
+    <h2>To Add new Employee Click Add Employee</h2>
+    <button type="button" id="btnAdd">Add Eployee</button><br /><br />
+
+
+</body>
+</html>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+                    $("#btnGetAll").click(function () {
+                        fetch("https://localhost:44337/api/Employee")
+                            .then(res => {
+                                return res.json();
+                            })
+                            .then(data => console.log(data))
+                            .catch(error => console.log(error));
+                    });
+        $("#btnGet").click(function () {
+            fetch("https://localhost:44337/api/Employee/ "+ $("#txtEmployeeId").val())
+                .then(res => {
+                    return res.json();
+                })
+                .then(data => console.log(data))
+                .catch(error => console.log(error));
+        });
+
+
+        $("#btnAdd").click(function () {
+            fetch("https://localhost:44337/api/Employee/", {
+                method: "post",
+                headers: {
+                    'Content-Type':'application/json'
+                },
+                body: JSON.stringify({
+                    
+                    Name: $("#txtEmployeeId").val(),
+                    Email: "karthick@demo.com",
+                    PhoneNo: 4663,
+                    Address: "fdfdef",
+                    City: "madurai"
+
+                })
+            })
+                .then(res => {
+                    return res.json();
+                })
+                .then(data => console.log(data))
+                .catch(error => console.log(error));
+        });
+
+        $("#btnDelete").click(function () {
+            fetch("https://localhost:44337/api/Employee/" + $("#txtEmployeeId2").val(), {
+                method: "delete",
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then(res => {
+                    return res.json();
+                })
+                .then(data => console.log(data))
+                .catch(error => console.log(error));
+        });
+
+       
+
+    });
+
+
+
+
+</script>
