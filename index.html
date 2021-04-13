@@ -14,6 +14,12 @@
     <button id="btnDelete">Delete a Employee</button><br />
     <br />
     <h2>To Add new Employee Click Add Employee</h2>
+    <input type="text" id="txtEmployeeName" placeholder="Employee Name" />
+    <input type="text" id="txtEmployeeEmail" placeholder="Employee Email" />
+    
+    <input type="text" id="txtEmployeeAddress" placeholder="Employee Address" />
+    <input type="text" id="txtEmployeecity" placeholder="Employee City" />
+    
     <button type="button" id="btnAdd">Add Eployee</button><br /><br />
 
 
@@ -48,11 +54,11 @@
                 },
                 body: JSON.stringify({
                     
-                    Name: $("#txtEmployeeId").val(),
-                    Email: "karthick@demo.com",
-                    PhoneNo: 4663,
-                    Address: "fdfdef",
-                    City: "madurai"
+                    Name: $("#txtEmployeeName").val(),
+                    Email: $("#txtEmployeeEmail").val(),
+                    PhoneNo: 1234567890,
+                    Address: $("#txtEmployeeAddress").val(),
+                    City: $("#txtEmployeecity").val()
 
                 })
             })
